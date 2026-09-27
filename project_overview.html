@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>وثيقة المشـروع والتقنيـات - بوابة القبول والتسجيل الجامعي</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 15mm;
+        }
+
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+            line-height: 1.7;
+        }
+
+        .no-print-bar {
+            background-color: #1e293b;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .btn-print {
+            background: linear-gradient(135deg, #4f46e5, #2563eb);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .btn-print:hover {
+            opacity: 0.9;
+        }
+
+        .document-card {
+            background-color: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+
+        .header-logo {
+            font-size: 48px;
+            margin-bottom: 8px;
+        }
+
+        .header-title {
+            font-size: 26px;
+            font-weight: 900;
+            color: #1e1b4b;
+            margin: 0 0 6px 0;
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            color: #4f46e5;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .section {
+            margin-bottom: 28px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1e293b;
+            border-right: 4px solid #4f46e5;
+            padding-right: 12px;
+            margin-bottom: 14px;
+            background: #f1f5f9;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        p {
+            font-size: 13.5px;
+            color: #334155;
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .card-box {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .card-box-title {
+            font-weight: 800;
+            font-size: 14px;
+            color: #1e1b4b;
+            margin-bottom: 6px;
+        }
+
+        .card-box-desc {
+            font-size: 12.5px;
+            color: #475569;
+            margin: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+            font-size: 13px;
+        }
+
+        table th, table td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 14px;
+            text-align: right;
+        }
+
+        table th {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            font-weight: 800;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            background-color: #e0e7ff;
+            color: #3730a3;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            font-size: 11px;
+            color: #94a3b8;
+        }
+
+        @media print {
+            .no-print-bar {
+                display: none !important;
+            }
+            body {
+                background: white;
+                padding: 0;
+            }
+            .document-card {
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print-bar">
+        <div>
+            <strong>📄 وثيقة المشروع الفنية (جاهزة للتحميل كـ PDF)</strong>
+            <div style="font-size: 12px; opacity: 0.8;">انقر على الزر لحفظ المستند فوراً بصيغة PDF</div>
+        </div>
+        <button onclick="window.print()" class="btn-print">🖨️ حفظ طباعة كـ PDF</button>
+    </div>
+
+    <div class="document-card">
+        
+        <!-- Header -->
+        <div class="header">
+            <div class="header-logo">🎓</div>
+            <h1 class="header-title">تقرير النظرة العامة وفكرة المشروع والتقنيات</h1>
+            <p class="header-subtitle">مشروع نظام بوابة القبول والتسجيل الجامعي الإلكتروني الموحد</p>
+        </div>
+
+        <!-- Section 1 -->
+        <div class="section">
+            <div class="section-title">📌 1. النظرة العامة وفكرة المشروع (Project Overview & Concept)</div>
+            <p>
+                مشروع <strong>"بوابة القبول والتسجيل الجامعي"</strong> هو منصة إلكترونية ذكية ومطورة توفر حلولاً متكاملة للطلاب الجدد وموظفي القبول والتسجيل في الجامعة. 
+                يهدف المشروع إلى أتمتة كافة مراحل تقديم طلبات التحاق الطلاب بالجامعة، وتسهيل عملية مراجعة واستحقاق المتقدمين بناءً على معدل الثانوية العامة والسعة الاستيعابية لكل تخصص.
+            </p>
+            <p>
+                تم بناء المنصة وفق معايير برمجية عالية تضمن عدم وقوع تعارض في المقاعد أو حجز زائد (Overbooking) بواسطة آليات حماية قواعد البيانات متزامنة التعديل (DB Transactions & LockForUpdate).
+            </p>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="section">
+            <div class="section-title">🛠️ 2. التقنيات والأدوات البرمجية المستخدمة (Tech Stack)</div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>المجال</th>
+                        <th>التقنية / الحزمة</th>
+                        <th>الوصف والاستخدام في المشروع</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>اللغة الأساسية</strong></td>
+                        <td><span class="badge">PHP 8.3+</span></td>
+                        <td>اللغة البرمجية لتشغيل الباك إند والمعالجة المنطقية للبيانات.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>إطار العمل</strong></td>
+                        <td><span class="badge">Laravel 12.x</span></td>
+                        <td>إطار العمل الرائد لبناء المسارات، المتحكمات، النماذج، والخدمات.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>تصميم الواجهات</strong></td>
+                        <td><span class="badge">Tailwind CSS 3.4</span></td>
+                        <td>بناء واجهات عصرية ومتجاوبة بالكامل مع الوضع الفاتح والداكن.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>التفاعلات الحية</strong></td>
+                        <td><span class="badge">Alpine.js 3.x</span></td>
+                        <td>إتاحة التفاعل السريع بالصفحة (الإشعارات، القوائم المنزلقة، والنافذة المنبثقة).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>إدارة الصلاحيات</strong></td>
+                        <td><span class="badge">Spatie Permissions</span></td>
+                        <td>إدارة أدوار وصلاحيات المستخدمين (طالب، موظف قبول، مشرف آدمن).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>قاعدة البيانات</strong></td>
+                        <td><span class="badge">SQLite / MySQL</span></td>
+                        <td>تخزين بيانات الطلاب، التخصصات، الطلبات، التذاكر، وسجل التتبع.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="section">
+            <div class="section-title">🌟 3. الأنظمة الفرعية والمميزات الرئيسية (Core Features)</div>
+            
+            <div class="grid-2">
+                <div class="card-box">
+                    <div class="card-box-title">🎓 1. بوابة الطالب التفاعلية</div>
+                    <div class="card-box-desc">تمكين الطالب من إنشاء حساب جديد، التقديم الفوري، ومتابعة حالة طلبه لحظة بلحظة.</div>
+                </div>
+                <div class="card-box">
+                    <div class="card-box-title">👔 2. لوحة تحكم موظف القبول</div>
+                    <div class="card-box-desc">مراجعة طلبات التقديم، اتخاذ قرار القبول/الرفض، وإدارة التخصصات والسعة.</div>
+                </div>
+                <div class="card-box">
+                    <div class="card-box-title">🔒 3. حماية المقاعد (DB Lock)</div>
+                    <div class="card-box-desc">تأمين عملية حجز المقاعد باستخدام المعاملات المترابطة لمنع تعارض الحجز الفوري.</div>
+                </div>
+                <div class="card-box">
+                    <div class="card-box-title">🔔 4. الإشعارات والتذاكر</div>
+                    <div class="card-box-desc">جرس إشعارات فورية بحالة الطلب ونظام محادثات واستفسارات (Support Tickets).</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="section">
+            <div class="section-title">🔑 4. بيانات تسجيل الدخول للاختبار (Test Credentials)</div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>الدور (Role)</th>
+                        <th>البريد الإلكتروني (Email)</th>
+                        <th>كلمة المرور (Password)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>موظف القبول (Admission Officer)</strong></td>
+                        <td>officer@college.edu</td>
+                        <td>password123</td>
+                    </tr>
+                    <tr>
+                        <td><strong>طالب جديد (Student)</strong></td>
+                        <td>student@college.edu</td>
+                        <td>password123</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            تمت طباعة واستخراج هذا المستند آلياً من نظام بوابة القبول والتسجيل الجامعي
+        </div>
+
+    </div>
+
+</body>
+</html>
