@@ -2,9 +2,13 @@
 
 > **مقرر:** هندسة البرمجيات (الجانب العملي) — العام الجامعي 2026/2027  
 > **مقدم تحت إشراف:** المهندس ساهر الهمداني  
-> **فريق العمل والتطوير:**  
-> - 👨‍💻 **محمد أحمد العلواني** (Team Lead & Backend Developer)  
-> - 👨‍💻 **أبان فرحان** (Frontend & Repository Maintainer)  
+> **فريق العمل والتطوير (Software Engineering Team):**  
+> - 👨‍💻 **محمد أحمد هزاع العلواني** (Team Lead & Backend Developer)  
+> - 👨‍💻 **أبان فرحان** (Frontend Developer & Repository Maintainer)  
+> - 👨‍💻 **عبد الله فارع** (Requirements Owner & QA Specialist)  
+> - 👨‍💻 **محمد جلال** (UI/UX & Documentation Lead)  
+> - 👨‍💻 **عبد العزيز أحمد** (Backend & Database Engineer)  
+> - 👨‍💻 **لؤي صالح ردمان** (Software Reviewer & Tester)  
 
 ---
 
@@ -89,3 +93,4 @@ php artisan test
 - `feature/student-portal`: بوابة التقديم وإدخال بيانات الطالب.
 - `feature/officer-dashboard`: لوحة الموظف وحماية المقاعد بـ DB Lock.
 - `feature/tickets-and-pdf`: التذاكر والإشعارات والتقارير القابلة للطباعة كـ PDF.
+- `docs/issue-2-update-srs`: وثائق المعمل والـ SRS وسجل الذكاء الاصطناعي.
