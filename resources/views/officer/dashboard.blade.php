@@ -42,24 +42,39 @@
 
             {{-- 1. كروت الإحصائيات الفورية --}}
             <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-                <a href="{{ route('officer.dashboard') }}" class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-xs border border-slate-200/80 dark:border-slate-700 hover:border-indigo-400 hover:shadow-md transition">
-                    <p class="text-xs font-bold text-slate-500 dark:text-slate-400">إجمالي الطلبات</p>
+                <a href="{{ route('officer.applications.detail') }}" class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-xs border border-slate-200/80 dark:border-slate-700 hover:border-indigo-400 hover:shadow-md transition group">
+                    <div class="flex items-center justify-between">
+                        <p class="text-xs font-bold text-slate-500 dark:text-slate-400">إجمالي الطلبات</p>
+                        <span class="text-xs text-indigo-600 dark:text-indigo-400 font-bold group-hover:translate-x-1 transition duration-200">تفاصيل ←</span>
+                    </div>
                     <p class="text-3xl font-black text-slate-900 dark:text-slate-100 mt-2">{{ $stats['total'] }}</p>
                 </a>
-                <a href="{{ route('officer.dashboard', ['status' => 'pending']) }}" class="bg-amber-50/60 dark:bg-amber-950/40 p-5 rounded-2xl shadow-xs border border-amber-200/80 dark:border-amber-800 hover:border-amber-400 hover:shadow-md transition">
-                    <p class="text-xs font-bold text-amber-700 dark:text-amber-300">⏳ قيد المراجعة</p>
+                <a href="{{ route('officer.applications.detail', ['status' => 'pending']) }}" class="bg-amber-50/60 dark:bg-amber-950/40 p-5 rounded-2xl shadow-xs border border-amber-200/80 dark:border-amber-800 hover:border-amber-400 hover:shadow-md transition group">
+                    <div class="flex items-center justify-between">
+                        <p class="text-xs font-bold text-amber-700 dark:text-amber-300">⏳ قيد المراجعة</p>
+                        <span class="text-xs text-amber-700 dark:text-amber-300 font-bold group-hover:translate-x-1 transition duration-200">تفاصيل ←</span>
+                    </div>
                     <p class="text-3xl font-black text-amber-900 dark:text-amber-100 mt-2">{{ $stats['pending'] }}</p>
                 </a>
-                <a href="{{ route('officer.dashboard', ['status' => 'approved']) }}" class="bg-emerald-50/60 dark:bg-emerald-950/40 p-5 rounded-2xl shadow-xs border border-emerald-200/80 dark:border-emerald-800 hover:border-emerald-400 hover:shadow-md transition">
-                    <p class="text-xs font-bold text-emerald-700 dark:text-emerald-300">🎉 المقبولة</p>
+                <a href="{{ route('officer.applications.detail', ['status' => 'approved']) }}" class="bg-emerald-50/60 dark:bg-emerald-950/40 p-5 rounded-2xl shadow-xs border border-emerald-200/80 dark:border-emerald-800 hover:border-emerald-400 hover:shadow-md transition group">
+                    <div class="flex items-center justify-between">
+                        <p class="text-xs font-bold text-emerald-700 dark:text-emerald-300">🎉 المقبولة</p>
+                        <span class="text-xs text-emerald-700 dark:text-emerald-300 font-bold group-hover:translate-x-1 transition duration-200">تفاصيل ←</span>
+                    </div>
                     <p class="text-3xl font-black text-emerald-900 dark:text-emerald-100 mt-2">{{ $stats['approved'] }}</p>
                 </a>
-                <a href="{{ route('officer.dashboard', ['status' => 'action_required']) }}" class="bg-orange-50/60 dark:bg-orange-950/40 p-5 rounded-2xl shadow-xs border border-orange-200/80 dark:border-orange-800 hover:border-orange-400 hover:shadow-md transition">
-                    <p class="text-xs font-bold text-orange-700 dark:text-orange-300">⚠️ تعديل مطلوب</p>
+                <a href="{{ route('officer.applications.detail', ['status' => 'action_required']) }}" class="bg-orange-50/60 dark:bg-orange-950/40 p-5 rounded-2xl shadow-xs border border-orange-200/80 dark:border-orange-800 hover:border-orange-400 hover:shadow-md transition group">
+                    <div class="flex items-center justify-between">
+                        <p class="text-xs font-bold text-orange-700 dark:text-orange-300">⚠️ تعديل مطلوب</p>
+                        <span class="text-xs text-orange-700 dark:text-orange-300 font-bold group-hover:translate-x-1 transition duration-200">تفاصيل ←</span>
+                    </div>
                     <p class="text-3xl font-black text-orange-900 dark:text-orange-100 mt-2">{{ $stats['action_required'] }}</p>
                 </a>
-                <a href="{{ route('officer.dashboard', ['status' => 'rejected']) }}" class="bg-rose-50/60 dark:bg-rose-950/40 p-5 rounded-2xl shadow-xs border border-rose-200/80 dark:border-rose-800 hover:border-rose-400 hover:shadow-md transition">
-                    <p class="text-xs font-bold text-rose-700 dark:text-rose-300">❌ المرفوضة</p>
+                <a href="{{ route('officer.applications.detail', ['status' => 'rejected']) }}" class="bg-rose-50/60 dark:bg-rose-950/40 p-5 rounded-2xl shadow-xs border border-rose-200/80 dark:border-rose-800 hover:border-rose-400 hover:shadow-md transition group">
+                    <div class="flex items-center justify-between">
+                        <p class="text-xs font-bold text-rose-700 dark:text-rose-300">❌ المرفوضة</p>
+                        <span class="text-xs text-rose-700 dark:text-rose-300 font-bold group-hover:translate-x-1 transition duration-200">تفاصيل ←</span>
+                    </div>
                     <p class="text-3xl font-black text-rose-900 dark:text-rose-100 mt-2">{{ $stats['rejected'] }}</p>
                 </a>
             </div>

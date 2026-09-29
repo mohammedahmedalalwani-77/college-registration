@@ -50,6 +50,44 @@ class AdmissionOfficerController extends Controller
         return view('officer.dashboard', compact('applications', 'stats', 'majors', 'statusFilter', 'searchQuery', 'admissionSetting'));
     }
 
+    public function applicationsDetail(Request $request)
+    {
+        $statusFilter = $request->query('status');
+        $searchQuery = $request->query('search');
+        $majorId = $request->query('major_id');
+
+        $query = Application::with(['user', 'major', 'histories.changedBy']);
+
+        if ($statusFilter && in_array($statusFilter, ['pending', 'approved', 'rejected', 'action_required'])) {
+            $query->where('status', $statusFilter);
+        }
+
+        if ($majorId) {
+            $query->where('major_id', $majorId);
+        }
+
+        if ($searchQuery) {
+            $query->whereHas('user', function ($q) use ($searchQuery) {
+                $q->where('name', 'like', "%{$searchQuery}%")
+                  ->orWhere('email', 'like', "%{$searchQuery}%");
+            });
+        }
+
+        $applications = $query->latest()->paginate(12)->withQueryString();
+
+        $stats = [
+            'total' => Application::count(),
+            'pending' => Application::where('status', 'pending')->count(),
+            'approved' => Application::where('status', 'approved')->count(),
+            'rejected' => Application::where('status', 'rejected')->count(),
+            'action_required' => Application::where('status', 'action_required')->count(),
+        ];
+
+        $majors = Major::all();
+
+        return view('officer.applications_detail', compact('applications', 'stats', 'majors', 'statusFilter', 'searchQuery', 'majorId'));
+    }
+
     public function updateAdmissionSettings(Request $request)
     {
         $request->validate([

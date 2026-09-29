@@ -49,6 +49,7 @@ Route::middleware(['auth'])->group(function () {
     // مسارات موظف القبول والتصدير والتذاكر
     Route::middleware(['role:Admission_Officer'])->prefix('officer')->group(function () {
         Route::get('/dashboard', [AdmissionOfficerController::class, 'index'])->name('officer.dashboard');
+        Route::get('/applications-detail', [AdmissionOfficerController::class, 'applicationsDetail'])->name('officer.applications.detail');
         Route::patch('/applications/{application}/status', [AdmissionOfficerController::class, 'updateStatus'])->name('officer.applications.updateStatus');
         Route::patch('/admission-settings', [AdmissionOfficerController::class, 'updateAdmissionSettings'])->name('officer.admissionSettings.update');
         
