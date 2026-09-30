@@ -40,8 +40,17 @@
                 </div>
             @endif
 
+            {{-- الإجراءات السريعة (الزر الجديد) --}}
+            <div class="flex justify-start">
+                <a href="{{ route('officer.applications', 'all') }}" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-indigo-300 shadow-sm transition-all">
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    إدارة ومراسلة الطلاب المتقدمين
+                </a>
+            </div>
+
             {{-- 1. كروت الإحصائيات الفورية --}}
             <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                
                 <a href="{{ route('officer.applications.detail') }}" class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-xs border border-slate-200/80 dark:border-slate-700 hover:border-indigo-400 hover:shadow-md transition group">
                     <div class="flex items-center justify-between">
                         <p class="text-xs font-bold text-slate-500 dark:text-slate-400">إجمالي الطلبات</p>

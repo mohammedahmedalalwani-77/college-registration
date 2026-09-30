@@ -50,6 +50,55 @@ class AdmissionOfficerController extends Controller
         return view('officer.dashboard', compact('applications', 'stats', 'majors', 'statusFilter', 'searchQuery', 'admissionSetting'));
     }
 
+    /**
+     * عرض طلبات الطلاب مفلترة حسب الحالة (عبر رابط المسار)
+     */
+    public function applicationsByStatus(Request $request, $status = 'all')
+    {
+        $query = Application::with(['user', 'major', 'histories.changedBy']);
+
+        // الحالات المعتمدة في النظام
+        $validStatuses = ['pending', 'approved', 'action_required', 'rejected'];
+
+        if ($status !== 'all') {
+            if (in_array($status, $validStatuses)) {
+                $query->where('status', $status);
+            } else {
+                return redirect()->route('officer.applications', 'all')
+                                 ->withErrors(['general' => 'حالة الطلب غير صالحة.']);
+            }
+        }
+
+        // البحث بالاسم أو البريد أو رقم الطلب واستثناء باقي الطلاب
+        $searchQuery = trim((string) $request->query('search', ''));
+
+        if ($searchQuery !== '') {
+            $query->where(function ($q) use ($searchQuery) {
+                $q->where('id', 'like', "%{$searchQuery}%")
+                  ->orWhereHas('user', function ($userQuery) use ($searchQuery) {
+                      $userQuery->where('name', 'like', "%{$searchQuery}%")
+                                ->orWhere('email', 'like', "%{$searchQuery}%");
+                  });
+            });
+        }
+
+        $applications = $query->latest()->paginate(15)->withQueryString();
+
+        // الإحصائيات الحقيقية المرتبطة بقاعدة البيانات
+        $approvedCount = Application::where('status', 'approved')->count();
+        $rejectedCount = Application::where('status', 'rejected')->count();
+        $totalCount = Application::count();
+
+        return view('officer.applications.index', compact(
+            'applications',
+            'status',
+            'searchQuery',
+            'approvedCount',
+            'rejectedCount',
+            'totalCount'
+        ));
+    }
+
     public function applicationsDetail(Request $request)
     {
         $statusFilter = $request->query('status');
@@ -86,6 +135,37 @@ class AdmissionOfficerController extends Controller
         $majors = Major::all();
 
         return view('officer.applications_detail', compact('applications', 'stats', 'majors', 'statusFilter', 'searchQuery', 'majorId'));
+    }
+
+    public function studentsDirectory(Request $request)
+    {
+        $statusFilter = $request->query('status');
+        $searchQuery = $request->query('search');
+
+        $query = Application::with(['user', 'major', 'histories.changedBy']);
+
+        if ($statusFilter && in_array($statusFilter, ['pending', 'approved', 'rejected', 'action_required'])) {
+            $query->where('status', $statusFilter);
+        }
+
+        if ($searchQuery) {
+            $query->whereHas('user', function ($q) use ($searchQuery) {
+                $q->where('name', 'like', "%{$searchQuery}%")
+                  ->orWhere('email', 'like', "%{$searchQuery}%");
+            });
+        }
+
+        $applications = $query->latest()->paginate(10)->withQueryString();
+
+        $stats = [
+            'total' => Application::count(),
+            'pending' => Application::where('status', 'pending')->count(),
+            'approved' => Application::where('status', 'approved')->count(),
+            'rejected' => Application::where('status', 'rejected')->count(),
+            'action_required' => Application::where('status', 'action_required')->count(),
+        ];
+
+        return view('officer.students_directory', compact('applications', 'stats', 'statusFilter', 'searchQuery'));
     }
 
     public function updateAdmissionSettings(Request $request)

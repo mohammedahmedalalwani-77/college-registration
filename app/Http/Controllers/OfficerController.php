@@ -7,20 +7,16 @@ use App\Models\Application;
 
 class OfficerController extends Controller
 {
-    /**
-     * عرض قائمة الطلبات مع معالجة البحث الدقيق والإحصائيات المرتبطة بقاعدة البيانات.
-     */
     public function applications(Request $request, $status = 'all')
     {
-        // بناء الاستعلام الأساسي مع العلاقات
         $query = Application::with(['user', 'major']);
 
-        // 1. تصفية النتائج حسب الحالة إذا لم تكن 'all'
+        // 1. تطبيق فلتر الحالة إذا لم يكن 'all'
         if ($status !== 'all') {
             $query->where('status', $status);
         }
 
-        // 2. البحث الدقيق واستثناء بقية الطلاب عند إدخال قيمة في البحث
+        // 2. تطبيق البحث الدقيق (بالاسم، البريد، أو رقم الطلب) واستثناء البقية
         if ($request->filled('search')) {
             $search = trim($request->input('search'));
             $query->where(function($q) use ($search) {
@@ -32,15 +28,14 @@ class OfficerController extends Controller
             });
         }
 
-        // تنفيذ التقسيم مع الاحتفاظ ببيانات البحث في الروابط
+        // جلب النتائج مع التقسيم والاحتفاظ ببيانات البحث
         $applications = $query->paginate(10)->withQueryString();
 
-        // 3. حساب الإحصائيات الحقيقية المرتبطة بقاعدة البيانات مباشرة
+        // 3. جلب الإحصائيات الحقيقية من قاعدة البيانات مباشرة
         $approvedCount = Application::where('status', 'approved')->count();
         $rejectedCount = Application::where('status', 'rejected')->count();
         $totalCount = Application::count();
 
-        // إرسال البيانات إلى واجهة العرض
         return view('officer.applications.index', compact(
             'applications', 
             'status', 

@@ -18,6 +18,9 @@
                     </x-nav-link>
 
                     @if(Auth::user()->hasRole('Admission_Officer'))
+                        <x-nav-link :href="route('officer.students.directory')" :active="request()->routeIs('officer.students.directory')" class="font-bold text-sm text-indigo-700 dark:text-indigo-400">
+                            👨‍🎓 {{ __('دليل بيانات الطلاب') }}
+                        </x-nav-link>
                         <x-nav-link :href="route('officer.tickets.index')" :active="request()->routeIs('officer.tickets.*')" class="font-bold text-sm">
                             🎫 {{ __('تذاكر استفسارات الطلاب') }}
                         </x-nav-link>
@@ -135,6 +138,9 @@
                 {{ __('لوحة التحكم') }}
             </x-responsive-nav-link>
             @if(Auth::user()->hasRole('Admission_Officer'))
+                <x-responsive-nav-link :href="route('officer.students.directory')" :active="request()->routeIs('officer.students.directory')" class="text-right font-bold text-indigo-700">
+                    👨‍🎓 {{ __('دليل بيانات الطلاب') }}
+                </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('officer.tickets.index')" :active="request()->routeIs('officer.tickets.*')" class="text-right font-bold">
                     🎫 {{ __('تذاكر الاستفسارات') }}
                 </x-responsive-nav-link>
